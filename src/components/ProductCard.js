@@ -37,7 +37,7 @@ const CardContainer = styled(motion.div)`
 `;
 
 const ProductTitle = styled.h3`
-  font-size: 1.2rem; /* Diminuí o tamanho do título */
+  font-size: 1.5rem; /* Diminuí o tamanho do título */
   margin-bottom: 0.5rem;
   color: #333;
   font-weight: bold;
@@ -48,7 +48,7 @@ const ProductTitle = styled.h3`
 `;
 
 const ProductDetail = styled.p`
-  font-size: 0.85rem; /* Diminuí o tamanho dos detalhes */
+  font-size: 1rem; /* Diminuí o tamanho dos detalhes */
   color: #555;
   margin-bottom: 0.5rem; /* Diminuí o espaçamento entre os itens */
 
