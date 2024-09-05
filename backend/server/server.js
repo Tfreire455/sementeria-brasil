@@ -1,4 +1,3 @@
-require('dotenv').config()
 const express = require("express");
 const cors = require("cors");
 const bcrypt = require("bcryptjs");
@@ -6,15 +5,17 @@ const jwt = require("jsonwebtoken");
 const xlsx = require("xlsx");
 const app = express();
 const port = 3001;
+require('dotenv').config();
+
+const PASSWORD = process.env.PASSWORD
 const SECRET_KEY = process.env.SECRET_KEY;
 
 app.use(cors());
 app.use(express.json());
-
 const users = [
   {
     username: "admin",
-    password: bcrypt.hashSync("M3l@nci@_Adm1n2024!", 10),
+    password: bcrypt.hashSync(PASSWORD, 10),
   },
 ];
 
