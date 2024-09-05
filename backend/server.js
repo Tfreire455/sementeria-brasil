@@ -69,7 +69,7 @@ app.get("/", (req, res) => {
   res.json({ items: data, totalItems: data.length });
 });
 
-app.post("/", authenticateToken, (req, res) => {
+app.post("/api", authenticateToken, (req, res) => {
   const newData = req.body;
   const newId = data.length ? Math.max(...data.map((item) => item.id)) + 1 : 1;
   newData["id"] = newId; // Define o ID como o próximo número disponível
