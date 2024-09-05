@@ -8,11 +8,10 @@ const CarouselContainer = styled(motion.div)`
   background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  height: 62vh;
+  height: 72vh;
   overflow: hidden;
   box-sizing: border-box;
 
-  
   @media (max-width: 768px) {
     font-size: 1.5rem;
     height: 84vh;
@@ -24,34 +23,41 @@ const Heading = styled(motion.h2)`
   color: #333;
   margin-top: 1rem;
   text-align: center;
-  font-family: 'Arial', sans-serif;
-  transition: transform 0.3s ease, color 0.3s ease;
+  font-family: "Arial", sans-serif;
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
 
   &:hover {
     color: #ff0084;
     transform: scale(1.02);
-  }
-
-  @media (max-width: 768px) {
-    font-size: 1.5rem;
-  }
-
-  @media (max-width: 576px) {
-    font-size: 1.25rem;
-  }
-`;
-
-const ProductGridContainer = styled.div`
-  display: flex;
+    }
+    
+    @media (max-width: 768px) {
+      font-size: 1.5rem;
+      }
+      
+      @media (max-width: 576px) {
+        font-size: 1.25rem;
+        }
+        `;
+        
+        const ProductGridContainer = styled.div`
+        justify-content: space-between;
+        margin: 10px 25px;
+        display: flex;
   overflow-x: auto;
-  padding: 0rem 0;
-  width: 100%;
-  max-height: 330px; /* Ajuste para a altura */
+  padding: 3rem;
+  height: 74%;
   overflow-y: hidden;
   scroll-behavior: smooth;
   scrollbar-width: thin;
   scrollbar-color: #888 #f9f9f9;
-  
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f9f9f9;
+
   ::-webkit-scrollbar {
     height: 6px;
   }
@@ -116,7 +122,12 @@ const ProductCarousel = () => {
         <ProductGrid
           initial={{ x: "-100%" }}
           animate={{ x: 0 }}
-          transition={{ type: "spring", stiffness: 50, damping: 15, duration: 1.2 }}
+          transition={{
+            type: "spring",
+            stiffness: 50,
+            damping: 15,
+            duration: 1.2,
+          }}
         >
           {limitedProducts.map((product) => (
             <ProductCard key={product.id} product={product} />

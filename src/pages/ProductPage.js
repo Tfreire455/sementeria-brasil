@@ -9,7 +9,7 @@ const ProductContainer = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   gap:10px;
-  padding: 2rem;
+  padding: 1rem;
   margin-top:110px;
   
   @media (max-width: 768px) {
