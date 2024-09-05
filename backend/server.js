@@ -65,7 +65,7 @@ const workbook = xlsx.readFile("07412046.xlsx");
 const sheet_name_list = workbook.SheetNames;
 let data = xlsx.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]);
 
-app.get("/api", (req, res) => {
+app.get("/", (req, res) => {
   res.json({ items: data, totalItems: data.length });
 });
 
