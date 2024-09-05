@@ -26,12 +26,17 @@ const PageContainer = styled.div`
   @media (min-width: 768px) {
     flex-direction: row;
     align-items: flex-start;
+    justify-content: space-between; /* Adiciona mais espaço entre os itens */
   }
 `;
 
 const ProductsContainer = styled.div`
-  flex: 1;
+  flex: 2; /* Aumenta o espaço do carrossel */
   overflow: hidden;
+`;
+
+const SideBannerContainer = styled.div`
+  flex: 1; /* Ocupa menos espaço em comparação ao carrossel */
 `;
 
 const HomePage = () => {

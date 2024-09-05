@@ -4,23 +4,20 @@ import { motion } from "framer-motion";
 import ProductCard from "./ProductCard";
 
 const CarouselContainer = styled(motion.div)`
-  flex: 1;
   margin: 10px 15px;
   background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  height: 72vh; /* Mesma altura do SideBanner */
+  height: 75vh; /* Aumentado de 72vh para 75vh */
   overflow: hidden;
   box-sizing: border-box;
 
   @media (max-width: 768px) {
-    height: 84vh; /* Ajusta para o mesmo tamanho em telas menores */
-  }
-
-  @media (max-width: 576px) {
-    height: 40vh;
+    font-size: 1.5rem;
+    height: 85vh; /* Ajusta a altura para telas menores */
   }
 `;
+
 
 const Heading = styled(motion.h2)`
   font-size: 1.75rem;

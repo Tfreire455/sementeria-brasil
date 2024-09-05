@@ -3,13 +3,13 @@ import styled from "styled-components";
 import bannerSideImg from "../assets/sideBanner.jpg";
 
 const SideBannerContainer = styled.div`
-  flex: 1;
-  height: 72vh; /* Ajusta para o mesmo tamanho do Carousel */
+  height: 50vh; /* Reduzido de 64vh para 50vh */
   width: auto;
   background: url(${bannerSideImg}) no-repeat center center;
   background-size: cover;
   display: flex;
   justify-content: center;
+  align-self: center;
   align-items: center;
   color: #fff;
   text-align: center;
@@ -24,14 +24,14 @@ const SideBannerContainer = styled.div`
   }
 
   @media (max-width: 768px) {
-    height: 84vh; /* Ajusta para o mesmo tamanho em telas menores */
-    padding: 1.5rem;
+    height: 40vh; /* Ajusta a altura para telas menores */
   }
 
   @media (max-width: 576px) {
-    height: 40vh;
+    height: 35vh; /* Ajusta a altura para telas muito pequenas */
   }
 `;
+
 
 const BannerContent = styled.div`
   height: 100%;
