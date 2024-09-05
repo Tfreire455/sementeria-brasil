@@ -18,15 +18,14 @@ const HomePageContainer = styled.div`
 
 const PageContainer = styled.div`
   display: flex;
-  flex-direction: column; /* Faz com que os itens empilhem verticalmente em telas menores */
+  flex-direction: column;
   padding-top: 1rem;
   gap: 10px;
-  width:100%;
+  width: 100%;
 
   @media (min-width: 768px) {
-    flex-direction: row; /* Muda para layout em linha em telas maiores */
-    align-items: flex-start; /* Alinha os itens ao topo */
-    
+    flex-direction: row;
+    align-items: flex-start;
   }
 `;
 
