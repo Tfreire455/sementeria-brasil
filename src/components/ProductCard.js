@@ -7,6 +7,7 @@ import Card from "react-bootstrap/Card";
 
 const CardContainer = styled(motion.div)`
   width: 50vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -27,7 +28,6 @@ const CardContainer = styled(motion.div)`
 
   @media (min-width: 768px) {
     padding: 1.5rem;
-    height: 40vh;
   }
 
   &:hover {
