@@ -18,25 +18,21 @@ const HomePageContainer = styled.div`
 
 const PageContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Faz com que os itens empilhem verticalmente em telas menores */
   padding-top: 1rem;
   gap: 10px;
-  width: 100%;
+  width:100%;
 
   @media (min-width: 768px) {
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between; /* Adiciona mais espaço entre os itens */
+    flex-direction: row; /* Muda para layout em linha em telas maiores */
+    align-items: flex-start; /* Alinha os itens ao topo */
+    
   }
 `;
 
 const ProductsContainer = styled.div`
-  flex: 2; /* Aumenta o espaço do carrossel */
+  flex: 1;
   overflow: hidden;
-`;
-
-const SideBannerContainer = styled.div`
-  flex: 1; /* Ocupa menos espaço em comparação ao carrossel */
 `;
 
 const HomePage = () => {

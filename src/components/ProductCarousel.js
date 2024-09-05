@@ -8,16 +8,15 @@ const CarouselContainer = styled(motion.div)`
   background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  height: 75vh; /* Aumentado de 72vh para 75vh */
+  height: 72vh;
   overflow: hidden;
   box-sizing: border-box;
 
   @media (max-width: 768px) {
     font-size: 1.5rem;
-    height: 85vh; /* Ajusta a altura para telas menores */
+    height: 84vh;
   }
 `;
-
 
 const Heading = styled(motion.h2)`
   font-size: 1.75rem;
@@ -45,11 +44,11 @@ const Heading = styled(motion.h2)`
 
 const ProductGridContainer = styled.div`
   justify-content: space-between;
-  margin: -43px 8px;
+  margin: 10px 25px;
   display: flex;
   overflow-x: auto;
   padding: 3rem;
-  height: 64vh;
+  height: 74%;
   overflow-y: hidden;
   scroll-behavior: smooth;
   scrollbar-width: thin;

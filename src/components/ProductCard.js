@@ -2,8 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
 
 const CardContainer = styled(motion.div)`
   width: 50vh;
@@ -11,11 +9,11 @@ const CardContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  max-width: 480px; /* Diminuí um pouco o tamanho máximo */
+  max-width: 480px;
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 15px;
-  padding: 1rem; /* Diminuí o padding */
+  padding: 1rem;
   text-align: left;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(10px);
@@ -24,7 +22,7 @@ const CardContainer = styled(motion.div)`
     box-shadow 0.3s ease;
   font-family: "Roboto", sans-serif;
   color: #333;
-  margin: 15px 05px;
+  margin: 15px 5px;
 
   @media (min-width: 768px) {
     padding: 1.5rem;
@@ -36,34 +34,52 @@ const CardContainer = styled(motion.div)`
   }
 `;
 
-const ProductTitle = styled.h3`
-  font-size: 1.5rem; /* Diminuí o tamanho do título */
+const Header = styled.div`
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  padding-bottom: 0.5rem;
   margin-bottom: 0.5rem;
+`;
+
+const ProductTitle = styled.h3`
+  font-size: 1.5rem;
+  margin: 0;
   color: #333;
   font-weight: bold;
 
   @media (min-width: 768px) {
-    font-size: 1rem; /* Tamanho maior para telas maiores */
+    font-size: 1rem;
   }
 `;
 
+const Body = styled.div`
+  flex: 1;
+`;
+
 const ProductDetail = styled.p`
-  font-size: 1rem; /* Diminuí o tamanho dos detalhes */
+  font-size: 0.85rem;
   color: #555;
-  margin-bottom: 0.5rem; /* Diminuí o espaçamento entre os itens */
+  margin: 0.5rem 0;
 
   @media (min-width: 768px) {
     font-size: 0.75rem;
   }
 `;
 
-const StyledButton = styled(Button)`
+const Footer = styled.div`
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  padding-top: 0.5rem;
+`;
+
+const StyledButton = styled.button`
   background-color: #ff0084;
   border: none;
-  padding: 0.4rem 0.9rem; /* Diminuí o padding do botão */
-  font-size: 0.85rem; /* Ajustei o tamanho da fonte do botão */
+  padding: 0.4rem 0.9rem;
+  font-size: 0.85rem;
   transition: background-color 0.3s ease;
   width: 100%;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
 
   &:hover {
     background-color: #ff3366;
@@ -86,9 +102,9 @@ const ProductCard = ({ product }) => {
   const {
     Produtos = "Produto desconhecido",
     "Outros Estados p/kg": outrosEstados = "Não disponível",
-     "Em SP p/kg": emSP = "Não disponível",
-     "Em SP -\r\nSimples Nacional": emSPSimples = "Não disponível",
-     Embalagem = "Não disponível",
+    "Em SP p/kg": emSP = "Não disponível",
+    "Em SP -\r\nSimples Nacional": emSPSimples = "Não disponível",
+    Embalagem = "Não disponível",
   } = product;
 
   return (
@@ -97,18 +113,18 @@ const ProductCard = ({ product }) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
     >
-      <Card.Header>
+      <Header>
         <ProductTitle>{Produtos}</ProductTitle>
-      </Card.Header>
-      <Card.Body>
+      </Header>
+      <Body>
         <ProductDetail>Outros Estados p/kg: {outrosEstados}</ProductDetail>
         <ProductDetail>Em SP p/kg: {emSP}</ProductDetail>
         <ProductDetail>Em SP - Simples Nacional: {emSPSimples}</ProductDetail>
         <ProductDetail>Embalagem: {Embalagem}</ProductDetail>
-      </Card.Body>
-      <Card.Footer>
         <StyledButton>Ver Mais</StyledButton>
-      </Card.Footer>
+      </Body>
+      <Footer>
+      </Footer>
     </CardContainer>
   );
 };
