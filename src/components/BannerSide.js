@@ -3,7 +3,7 @@ import styled from "styled-components";
 import bannerSideImg from "../assets/sideBanner.jpg";
 
 const SideBannerContainer = styled.div`
-  height: 60vh;
+  height: 64vh;
   width: auto;
   background: url(${bannerSideImg}) no-repeat center center;
   background-size: cover;

@@ -31,24 +31,24 @@ const Heading = styled(motion.h2)`
   &:hover {
     color: #ff0084;
     transform: scale(1.02);
-    }
-    
-    @media (max-width: 768px) {
-      font-size: 1.5rem;
-      }
-      
-      @media (max-width: 576px) {
-        font-size: 1.25rem;
-        }
-        `;
-        
-        const ProductGridContainer = styled.div`
-        justify-content: space-between;
-        margin: 10px 25px;
-        display: flex;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 1.25rem;
+  }
+`;
+
+const ProductGridContainer = styled.div`
+  justify-content: space-between;
+  margin: -43px 8px;
+  display: flex;
   overflow-x: auto;
   padding: 3rem;
-  height: 74%;
+  height: 64vh;
   overflow-y: hidden;
   scroll-behavior: smooth;
   scrollbar-width: thin;
