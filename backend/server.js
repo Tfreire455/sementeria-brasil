@@ -1,16 +1,8 @@
-// eslint-disable-next-line no-undef
 const express = require("express");
-// eslint-disable-next-line no-undef
 const cors = require("cors");
-// eslint-disable-next-line no-undef
 const bcrypt = require("bcryptjs");
-// eslint-disable-next-line no-undef
 const jwt = require("jsonwebtoken");
-// eslint-disable-next-line no-undef
 const xlsx = require("xlsx");
-const app = express();
-const port = 3001;
-// eslint-disable-next-line no-undef
 require('dotenv').config();
 
 // eslint-disable-next-line no-undef
