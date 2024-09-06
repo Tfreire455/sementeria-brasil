@@ -9,30 +9,14 @@ import Promotions from "../components/Promotions";
 import NewsletterSignup from "../components/NewsletterSignup";
 import styled from "styled-components";
 import axios from "axios";
-import SideBanner from "../components/BannerSide";
 
 const HomePageContainer = styled.div`
   font-family: Arial, sans-serif;
   padding: 1rem; /* Adiciona um pouco de padding ao redor da página */
 `;
 
-const PageContainer = styled.div`
-  display: flex;
-  flex-direction: column; /* Faz com que os itens empilhem verticalmente em telas menores */
-  padding-top: 1rem;
-  gap: 10px;
-  width:100%;
-
-  @media (min-width: 768px) {
-    flex-direction: row; /* Muda para layout em linha em telas maiores */
-    align-items: flex-start; /* Alinha os itens ao topo */
-    
-  }
-`;
-
-const ProductsContainer = styled.div`
-  flex: 1;
-  overflow: hidden;
+const DivMargin = styled.div`
+  margin: 1rem 10px;
 `;
 
 const HomePage = () => {
@@ -54,12 +38,9 @@ const HomePage = () => {
   return (
     <HomePageContainer>
       <Banner />
-      <PageContainer>
-        <SideBanner />
-        <ProductsContainer>
-          <ProductCarousel products={products} />
-        </ProductsContainer>
-      </PageContainer>
+      <DivMargin>
+        <ProductCarousel products={products} />
+      </DivMargin>
       <AboutUs />
       <Certifications />
       <Testimonials />

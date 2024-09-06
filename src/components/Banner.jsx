@@ -13,6 +13,9 @@ const BannerContainer = styled.div`
   width: 100%;
   top: 100px;
   margin-bottom: 100px;
+  border-radius: 8px;
+  
+  box-shadow: 0px 7px 18px 0px rgba(0,0,0,0.75);
   overflow: hidden;
   &:hover .overlay {
     opacity: 1;

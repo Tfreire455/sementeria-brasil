@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 const CardContainer = styled(motion.div)`
-  width: 50vh;
+  width: 80vh;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -20,30 +20,34 @@ const CardContainer = styled(motion.div)`
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
-  font-family: "Roboto", sans-serif;
-  color: #333;
+    font-family: "Roboto", sans-serif;
+    color: #333;
   margin: 15px 5px;
-
+  
   @media (min-width: 768px) {
     padding: 1.5rem;
-  }
-
+    }
+    
   &:hover {
     transform: scale(1.05) rotate(1deg);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
-  }
-`;
-
-const Header = styled.div`
-  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-  padding-bottom: 0.5rem;
-  margin-bottom: 0.5rem;
-`;
-
-const ProductTitle = styled.h3`
+    }
+    `;
+    
+    const Header = styled.div`
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    `;
+    
+    const ProductTitle = styled.h3`
   font-size: 1.5rem;
   margin: 0;
-  color: #333;
+  color: var(--secondary-yellow);
+  border-radius: 15px 15px 0 0 ;
+  height: 100%;
+  padding: 10px;
+  background-color: var(--primary-green);
   font-weight: bold;
 
   @media (min-width: 768px) {
@@ -57,7 +61,7 @@ const Body = styled.div`
 
 const ProductDetail = styled.p`
   font-size: 0.85rem;
-  color: #555;
+  color: #fff;
   margin: 0.5rem 0;
 
   @media (min-width: 768px) {
@@ -95,6 +99,8 @@ const StyledButton = styled.button`
 `;
 
 const ProductCard = ({ product }) => {
+  console.log("Current product: ", product); // Verificar o produto atual
+
   if (!product) {
     return <p>Produto não encontrado</p>;
   }
@@ -111,7 +117,7 @@ const ProductCard = ({ product }) => {
     <CardContainer
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
+      transition={{ duration: 1.0, ease: "easeInOut" }}
     >
       <Header>
         <ProductTitle>{Produtos}</ProductTitle>
@@ -121,23 +127,16 @@ const ProductCard = ({ product }) => {
         <ProductDetail>Em SP p/kg: {emSP}</ProductDetail>
         <ProductDetail>Em SP - Simples Nacional: {emSPSimples}</ProductDetail>
         <ProductDetail>Embalagem: {Embalagem}</ProductDetail>
-        <StyledButton>Ver Mais</StyledButton>
       </Body>
       <Footer>
+        <StyledButton>Ver Detalhes</StyledButton>
       </Footer>
     </CardContainer>
   );
 };
 
 ProductCard.propTypes = {
-  product: PropTypes.shape({
-    id: PropTypes.number,
-    Produtos: PropTypes.string,
-    "Outros Estados p/kg": PropTypes.string,
-    "Em SP p/kg": PropTypes.string,
-    "Em SP -\r\nSimples Nacional": PropTypes.string,
-    Embalagem: PropTypes.string,
-  }),
+  product: PropTypes.object.isRequired,
 };
 
 export default ProductCard;

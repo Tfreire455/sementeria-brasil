@@ -8,6 +8,7 @@ const FooterContainer = styled.footer`
   padding: 1rem;
   background: #333;
   color: #fff;
+  box-shadow: 0px 7px 18px 0px rgba(0,0,0,0.75);
   text-align: center;
 `;
 
@@ -32,7 +33,9 @@ const SocialIconsContainer = styled.div`
 const IconLink = styled.a`
   color: #fff;
   font-size: 1.5rem;
-  transition: color 0.3s ease, transform 0.3s ease;
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
   &:hover {
     transform: scale(1.2);
   }

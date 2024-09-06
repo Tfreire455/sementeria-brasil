@@ -1,11 +1,11 @@
 // src/styles/GlobalStyle.js
 import { createGlobalStyle } from "styled-components";
-
+import backImg from "./assets/4577.jpg";
 const GlobalStyle = createGlobalStyle`
   :root {
     --primary-green: #00571D;
     --secondary-yellow: #FFDE20;
-    --light-green: #00571D90;
+    --light-green: #90ff1D90;
   }
 
   *, html {
@@ -17,6 +17,11 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-family: 'Arial', sans-serif; /* Exemplo de uso */
     color: #333;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7)), url(${backImg});
+    background-size: contain;
+    background-position: center;
+
+
   }
 
   h1, h2, h3, h4, h5, h6 {
