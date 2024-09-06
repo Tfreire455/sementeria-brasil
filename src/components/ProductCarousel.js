@@ -20,6 +20,7 @@ border-radius: 8px;
 @media (max-width: 768px) {
   margin-top: 220px;
   font-size: 1.5rem;
+  height: 64vh;
   }
   `;
   

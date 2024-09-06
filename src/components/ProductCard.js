@@ -26,6 +26,7 @@ const CardContainer = styled(motion.div)`
   
   @media (min-width: 768px) {
     padding: 1.5rem;
+    height: 100%;
     }
     
   &:hover {
