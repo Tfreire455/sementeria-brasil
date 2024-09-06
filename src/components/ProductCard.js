@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const CardContainer = styled(motion.div)`
   width: 80vh;
-  height: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -26,6 +26,7 @@ const CardContainer = styled(motion.div)`
   
   @media (min-width: 768px) {
     padding: 1.5rem;
+    height: 100vh;
     }
     
   &:hover {
