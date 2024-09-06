@@ -5,11 +5,11 @@ import { motion } from "framer-motion";
 
 const CardContainer = styled(motion.div)`
   width: 80vh;
-  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   max-width: 480px;
+  height: max-content;
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 15px;
@@ -26,7 +26,7 @@ const CardContainer = styled(motion.div)`
   
   @media (min-width: 768px) {
     padding: 1.5rem;
-    height: 100%;
+
     }
     
   &:hover {
