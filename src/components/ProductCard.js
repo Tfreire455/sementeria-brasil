@@ -1,142 +1,234 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import ProductCard from "./ProductCard";
+import { Parallax } from "react-parallax";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa"; // Ícones de setas
+import SideBanner from "../assets/destaque.jpg";
 
-const CardContainer = styled(motion.div)`
-  width: 80vh;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  max-width: 480px;
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 15px;
-  padding: 1rem;
-  text-align: left;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(10px);
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-    font-family: "Roboto", sans-serif;
-    color: #333;
-  margin: 15px 5px;
-  
-  @media (min-width: 768px) {
-    padding: 1.5rem;
-    }
-    
+const CarouselContainer = styled(motion.div)`
+  box-shadow: 0px 7px 18px 0px rgba(0, 0, 0, 0.75);
+  margin-top: 150px;
+  height: 64vh;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  backdrop-filter: blur(2px);
+  box-sizing: border-box;
+  border-radius: 8px;
+  @media (max-width: 1440px) {
+    margin-top: 100px;
+    height: 50vh;
+  }
+  @media (max-width: 1200px) {
+    margin-top: 80px;
+  }
+  @media (max-width: 1024px) {
+    margin-top: 60px;
+    height: 55vh;
+  }
+  @media (max-width: 768px) {
+    margin-top: 40px;
+    height: 60vh;
+  }
+  @media (max-width: 600px) {
+    margin-top: 30px;
+    height: 65vh;
+  }
+  @media (max-width: 480px) {
+    margin-top: 20px;
+    height: 70vh;
+  }
+  @media (max-width: 320px) {
+    margin-top: 10px;
+    height: 75vh;
+  }
+`;
+
+const Heading = styled(motion.h2)`
+  font-size: 1.75rem;
+  color: var(--primary-green);
+  margin: 0 auto;
+  margin-top: 1rem;
+  text-align: center;
+  width: 50%;
+  border-radius: 10px;
+  padding: 10px 0;
+  background-color: var(--secondary-yellow);
+  font-family: "Arial", sans-serif;
+  transition: transform 0.3s ease, color 0.3s ease;
   &:hover {
-    transform: scale(1.05) rotate(1deg);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
-    }
-    `;
-    
-    const Header = styled.div`
-    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-    padding-bottom: 0.5rem;
-    margin-bottom: 0.5rem;
-    `;
-    
-    const ProductTitle = styled.h3`
-  font-size: 1.5rem;
-  margin: 0;
-  color: var(--secondary-yellow);
-  border-radius: 15px 15px 0 0 ;
-  height: 100%;
-  padding: 10px;
-  background-color: var(--primary-green);
-  font-weight: bold;
-
-  @media (min-width: 768px) {
+    color: var(--secondary-yellow);
+    background-color: var(--light-green);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    transform: scale(1.02);
+  }
+  @media (max-width: 1440px) {
+    font-size: 1.6rem;
+  }
+  @media (max-width: 1200px) {
+    font-size: 1.5rem;
+  }
+  @media (max-width: 1024px) {
+    font-size: 1.4rem;
+  }
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+  }
+  @media (max-width: 600px) {
+    font-size: 1.2rem;
+  }
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+  }
+  @media (max-width: 320px) {
     font-size: 1rem;
   }
 `;
 
-const Body = styled.div`
-  flex: 1;
-`;
-
-const ProductDetail = styled.p`
-  font-size: 0.85rem;
-  color: #fff;
-  margin: 0.5rem 0;
-
-  @media (min-width: 768px) {
-    font-size: 0.75rem;
+const ProductGridContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 2rem;
+  height: 74%;
+  @media (max-width: 1440px) {
+    padding: 1.5rem;
+  }
+  @media (max-width: 1200px) {
+    padding: 1.2rem;
+  }
+  @media (max-width: 1024px) {
+    padding: 1rem;
+  }
+  @media (max-width: 768px) {
+    padding: 0.8rem;
+  }
+  @media (max-width: 600px) {
+    padding: 0.6rem;
+  }
+  @media (max-width: 480px) {
+    padding: 0.4rem;
   }
 `;
 
-const Footer = styled.div`
-  border-top: 1px solid rgba(255, 255, 255, 0.4);
-  padding-top: 0.5rem;
-`;
-
-const StyledButton = styled.button`
-  background-color: #ff0084;
+const ArrowButton = styled.button`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
   border: none;
-  padding: 0.4rem 0.9rem;
-  font-size: 0.85rem;
-  transition: background-color 0.3s ease;
-  width: 100%;
   color: white;
+  font-size: 1.5rem;
+  padding: 0.5rem;
   cursor: pointer;
-  border-radius: 5px;
-
+  z-index: 10;
   &:hover {
-    background-color: #ff3366;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    background-color: rgba(0, 0, 0, 0.8);
   }
-
-  &:focus {
-    background-color: #ff0055;
-    outline: none;
-    box-shadow: none;
+  ${({ left }) => (left ? "left: 10px;" : "right: 10px;")}
+  @media (max-width: 1440px) {
+    font-size: 1.4rem;
+  }
+  @media (max-width: 1200px) {
+    font-size: 1.3rem;
+  }
+  @media (max-width: 1024px) {
+    font-size: 1.2rem;
+  }
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    padding: 0.4rem;
+  }
+  @media (max-width: 600px) {
+    font-size: 1rem;
+    padding: 0.3rem;
+  }
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    padding: 0.2rem;
+  }
+  @media (max-width: 320px) {
+    font-size: 0.8rem;
+    padding: 0.1rem;
   }
 `;
 
-const ProductCard = ({ product }) => {
-  console.log("Current product: ", product); // Verificar o produto atual
+const ProductGrid = styled(motion.div)`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+`;
 
-  if (!product) {
-    return <p>Produto não encontrado</p>;
-  }
+const ProductCarousel = () => {
+  const [products, setProducts] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  const {
-    Produtos = "Produto desconhecido",
-    "Outros Estados p/kg": outrosEstados = "Não disponível",
-    "Em SP p/kg": emSP = "Não disponível",
-    "Em SP -\r\nSimples Nacional": emSPSimples = "Não disponível",
-    Embalagem = "Não disponível",
-  } = product;
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch("https://sementeriaapi.onrender.com/");
+        const data = await response.json();
+        console.log("Products loaded: ", data.items);
+        setProducts(data.items);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  const limitedProducts = products.slice(0, 9);
+  console.log("Limited Products: ", limitedProducts);
+
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? limitedProducts.length - 1 : prevIndex - 1
+    );
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === limitedProducts.length - 1 ? 0 : prevIndex + 1
+    );
+  };
 
   return (
-    <CardContainer
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1.0, ease: "easeInOut" }}
-    >
-      <Header>
-        <ProductTitle>{Produtos}</ProductTitle>
-      </Header>
-      <Body>
-        <ProductDetail>Outros Estados p/kg: {outrosEstados}</ProductDetail>
-        <ProductDetail>Em SP p/kg: {emSP}</ProductDetail>
-        <ProductDetail>Em SP - Simples Nacional: {emSPSimples}</ProductDetail>
-        <ProductDetail>Embalagem: {Embalagem}</ProductDetail>
-      </Body>
-      <Footer>
-        <StyledButton>Ver Detalhes</StyledButton>
-      </Footer>
-    </CardContainer>
+    <CarouselContainer>
+      <Parallax bgImage={SideBanner} strength={400} blur={0}>
+        <Heading
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 3, ease: "easeOut" }}
+        >
+          Produtos em Destaque
+        </Heading>
+        <ProductGridContainer>
+          <ArrowButton left onClick={handlePrev}>
+            <FaArrowLeft />
+          </ArrowButton>
+          <ProductGrid
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            key={currentIndex}
+          >
+            {limitedProducts.length > 0 ? (
+              <ProductCard product={limitedProducts[currentIndex]} />
+            ) : (
+              <p>Nenhum produto disponível</p>
+            )}
+          </ProductGrid>
+          <ArrowButton onClick={handleNext}>
+            <FaArrowRight />
+          </ArrowButton>
+        </ProductGridContainer>
+      </Parallax>
+    </CarouselContainer>
   );
 };
 
-ProductCard.propTypes = {
-  product: PropTypes.object.isRequired,
-};
-
-export default ProductCard;
+export default ProductCarousel;
